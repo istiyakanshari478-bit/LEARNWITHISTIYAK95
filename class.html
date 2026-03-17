@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DCA Video Course</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:#f2f2f2;
+}
+
+.header{
+background:white;
+padding:10px;
+box-shadow:0 0 5px gray;
+}
+
+.container{
+display:flex;
+padding:20px;
+}
+
+/* VIDEO PLAYER */
+
+.player{
+flex:2;
+}
+
+iframe{
+width:100%;
+height:420px;
+border:none;
+border-radius:10px;
+}
+
+/* BUTTONS */
+
+.controls{
+margin-top:10px;
+}
+
+button{
+padding:10px 18px;
+margin-right:10px;
+border:none;
+background:#007bff;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:#0056b3;
+}
+
+/* PLAYLIST */
+
+.playlist{
+flex:1;
+background:white;
+margin-left:20px;
+padding:10px;
+height:450px;
+overflow-y:auto;
+box-shadow:0 0 5px gray;
+}
+
+.video-item{
+padding:12px;
+border-bottom:1px solid #ddd;
+cursor:pointer;
+}
+
+.video-item:hover{
+background:#e8f2ff;
+}
+
+/* PROGRESS */
+
+.progress-box{
+margin-top:15px;
+}
+
+progress{
+width:100%;
+height:20px;
+}
+
+.exam{
+margin-top:10px;
+background:red;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h2>Learn with Istiyak - DCA Course</h2>
+</div>
+
+<div class="container">
+
+<div class="player">
+
+<iframe id="videoPlayer"
+src="https://www.youtube.com/embed/iItkypJUKZQ"
+allowfullscreen>
+</iframe>
+
+<div class="controls">
+<button onclick="prevVideo()">Previous</button>
+<button onclick="nextVideo()">Next</button>
+</div>
+
+<div class="progress-box">
+<p>Course Progress</p>
+<progress id="progressBar" value="1" max="5"></progress>
+<button class="exam">Start Exam</button>
+</div>
+
+</div>
+
+<div class="playlist">
+
+<div class="video-item" onclick="playVideo(0)">
+1. Introduction to Computer
+</div>
+
+<div class="video-item" onclick="playVideo(1)">
+2. Basic Computer Skills
+</div>
+
+<div class="video-item" onclick="playVideo(2)">
+3. Hardware and Software
+</div>
+
+<div class="video-item" onclick="playVideo(3)">
+4. Storage Devices
+</div>
+
+<div class="video-item" onclick="playVideo(4)">
+5. Input Output Devices
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+var videos = [
+
+"https://www.youtube.com/embed/iItkypJUKZQ",
+"https://www.youtube.com/embed/iItkypJUKZQ",
+"https://www.youtube.com/embed/iItkypJUKZQ",
+"https://www.youtube.com/embed/iItkypJUKZQ",
+"https://www.youtube.com/embed/iItkypJUKZQ"
+
+];
+
+var currentVideo = 0;
+
+function playVideo(index){
+
+currentVideo = index;
+
+document.getElementById("videoPlayer").src = videos[index];
+
+document.getElementById("progressBar").value = index + 1;
+
+}
+
+function nextVideo(){
+
+if(currentVideo < videos.length-1){
+currentVideo++;
+playVideo(currentVideo);
+}
+
+}
+
+function prevVideo(){
+
+if(currentVideo > 0){
+currentVideo--;
+playVideo(currentVideo);
+}
+
+}
+
+</script>
+
+</body>
+</html>
